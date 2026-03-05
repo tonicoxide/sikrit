@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>sikrit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #fff0f5;
+      text-align: center;
+      padding: 50px;
+    }
+
+  .heart {
+  position: absolute;
+  color: red;
+  font-size: 24px;
+  animation: floatUp 3s ease-in forwards;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100px); opacity: 0; }
+}
+
+.fade-in {
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#courtQuestion {
+  margin-top: 30px;
+}
+
+#courtQuestion h2 {
+  margin-bottom: 20px;
+}
+
+#courtQuestion button {
+  margin: 10px;
+  padding: 12px 24px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #ff6699;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+#courtQuestion button:hover {
+  transform: scale(1.1);
+  background-color: #ff3366;
+}
+
+
+#courtQuestion button:hover {
+  transform: scale(1.1);
+}
+    #letter {
+  cursor: pointer;
+  padding: 30px;
+  border: 2px solid rgb(112, 118, 146);
+  border-radius: 10px;
+  display: none; /* hidden until unlocked */
+  background-color: #6996e2;
+  transition: transform 0.3s ease;
+  max-width: 700px;       /* keeps text in a nice column */
+  margin: 0 auto;         /* centers the box horizontally */
+  text-align: left;       /* aligns text neatly */
+  line-height: 1.6;       /* improves readability */
+}
+
+#letter h1 {
+  text-align: center;     /* title stays centered */
+  margin-bottom: 20px;
+}
+
+#letter:hover {
+  transform: scale(1.05);
+}
+  </style>
+</head>
+<body>
+
+  <body>
+  <!-- Password Gate -->
+  <div id="gate">
+    <h2>Password muna XP</h2>
+    <p>Hint: 1/8 2/9 1/9 3/4 1/3 1/6 1/9 1/7, 3/7 1/8 2/8</p>
+    <input type="text" id="password" placeholder="Type here...">
+    <button onclick="checkPassword()">Unlock</button>
+  </div>
+
+  <!-- Question 1 -->
+  <div id="gate1" style="display:none;">
+    <h1>know me or no letter</h1>
+    <h2>1: ano una kong ginagawa pagkagising?</h2>
+    <form>
+      <input type="radio" name="q1" value="pinupulot mga nahulog kong anak"> pinupulot mga nahulog kong anak<br>
+      <input type="radio" name="q1" value="nagpho-phone"> nagpho-phone<br>
+      <input type="radio" name="q1" value="bumabalik sa pagtulog"> bumabalik sa pagtulog<br>
+      <input type="radio" name="q1" value="sasayaw"> sasayaw<br>
+      <button type="button" onclick="checkAnswer1()">Submit</button>
+    </form>
+  </div>
+
+  <!-- Question 2 -->
+  <div id="gate2" style="display:none;">
+    <h2>2: pet peeve ko (pick the best answer)😏</h2>
+    <form>
+      <input type="radio" name="q2" value="dumudura sa daan"> dumudura sa daan<br>
+      <input type="radio" name="q2" value="binubugahan ako usok ng vape/sigarilyo"> binubugahan ako usok ng vape/sigarilyo<br>
+      <input type="radio" name="q2" value="tinutulugan ako"> tinutulugan ako<br>
+      <input type="radio" name="q2" value="all of the above"> all of the above<br>
+      <button type="button" onclick="checkAnswer2()">Submit</button>
+    </form>
+  </div>
+
+  <!-- Question 3 -->
+  <div id="gate3" style="display:none;">
+    <h2>3: what did i learned first? 💕</h2>
+    <form>
+      <input type="radio" name="q3" value="piano/keyboard"> piano/keyboard<br>
+      <input type="radio" name="q3" value="guitar"> guitar<br>
+      <input type="radio" name="q3" value="drums"> drums<br>
+      <input type="radio" name="q3" value="ukelele"> ukelele<br>
+      <button type="button" onclick="checkAnswer3()">Submit</button>
+    </form>
+  </div>
+
+  <!-- Question 4 -->
+  <div id="gate4" style="display:none;">
+    <h2>4: favorite ko sa nomnomz 🤪</h2>
+    <form>
+      <input type="radio" name="q4" value="rance"> rance<br>
+      <input type="radio" name="q4" value="cath"> cath<br>
+      <input type="radio" name="q4" value="tine"> tine<br>
+      <input type="radio" name="q4" value="verge"> verge<br>
+      <input type="radio" name="q4" value="cgob"> cgob<br>
+      <input type="radio" name="q4" value="matt"> matt<br>
+      <input type="radio" name="q4" value="jervs"> jervs<br>
+      <input type="radio" name="q4" value="tof"> tof<br>
+      <input type="radio" name="q4" value="wala"> wala<br>
+      <button type="button" onclick="checkAnswer4()">Submit</button>
+    </form>
+  </div>
+
+  <!-- Question 5 -->
+  <div id="gate5" style="display:none;">
+    <h2>Final Boss: ult group ko before straykids 😳</h2>
+    <form>
+      <input type="radio" name="q5" value="bts"> bts<br>
+      <input type="radio" name="q5" value="itzy"> itzy<br>
+      <input type="radio" name="q5" value="iz*one"> iz*one<br>
+      <input type="radio" name="q5" value="seventeen"> seventeen<br>
+      <button type="button" onclick="checkAnswer5()">Submit</button>
+    </form>
+  </div>
+
+  <!-- Final Letter -->
+  <div id="letter" style="display:none;" onclick="playSong()">
+    <h1>my dearest mingming,</h1>
+    <p>Hi, Mingming ku 😛 Panes ka na naman, ako lang 'to 😜 Enaral lang naman ang html.  Mag click ka anywhere, may magic……... Nag-play na ba music? If hindi pa, click ka lang ulit, ehhehe. If yes, read the rest well. This is actually an on the spot letter kasi tinatype ko na 'to mismo sa code para deretso na HAHAHAHA. I hope na masabi ko rin lahat nang maayos and this is my 3rd letter so mas special kasi kita mo naman, naka website pa. Ayos ba yung question and answer? HAHHAHAHAHAHHA I tried to make this letter na kayang mabasa within 2 mins para sakto sa music kaya sana sumakto. 'Pag hindi edi wag. Nasabi ko na rin naman sa'yo na there was a time na hindi ako okay, and that was because of my fears and trauma sa past ko. Ayoko na kasi talagang maulit yung hindi ko alam kung ano ko yung isang tao. Ayoko sa clueless ako kung ano kami at kung ano yung nangyayari sa amin kasi 'di talaga ako pala tanong kasi laging nasa isip ko na ayokong ma-pressure yung tao, and I want them to tell it to me naturally. Marami pa talagang bumabagabag sa akin and siguro, sasabihin ko nalang sayo kapag nakapag hangout na tayo ulit, hehe.
+
+I actually assumed na iisipin mong happy crush lang or like mawawala agad kasi nga I had feelings with Cath too before. But you two are different. Iba ka. Siguro kasi given the fact din na I’m comfortable being clingy with you, and nagtutugma tayo ng kagagahan. Marami pa e, it’s just different when I’m with you. I know that you already know that I cried when the time you friendzoned me. Siyempre, sino bang matutuwa roon? Nasabi mo na rin na kahit sabihin ko ‘yon sa araw na plinano ko, which is December (last year), same response pa rin yung matatanggap ko. So ang plano ko lang talaga noon is to tell you everything. Ayoko kasi yung natitigil ang isang bagay nang hindi ko nasasabi lahat ng nararamdaman ko. Bumawi lang din talaga ako. Lahat ng sinabi ko noong face-to-face confession ko at sa 1st letter, totoo iyon lahat.
+I’m also that type of person na nafa-frustrate kapag di ko nakukuha yung gusto ko, but not in an obsessive way naman na pipilitin ko yung bagay na ’yon. But whenever I have that chance, I do always grab it. Tinake advantage ko na yung “friendship” na ’yon kaya sabi ko bahala na, kahit kaibigan lang tingin mo sa’kin. Pero I’m always making sure na aware ka sa side ko, hindi kita tinitignan as kaibigan lang. I’m always genuinely shocked whenever you say yes sa mga aya ko. Simula nung sa birthday ko, sa sabay na pagpasok sa umaga, sa Valentine’s. I didn’t want to assume that time but fuck, ayoko nang itanggi na my hope percent got higher after those things. I’m also always praying for you. Whenever I’m feeling na wala na akong ibang choice, dinadaan ko na lang talaga sa dasal. Kahit noong mga oras na nalilito na ako kung may iba na ba sa nararamdaman mo, o nag-a-assume lang ako at hanggang kaibigan lang talaga. I surrendered, actually. Sabi ko wala na akong pake, but it stings in my heart because I really want it to be you. To the fact na hindi ako mapakali na ayusin yung unsettled things between me and Lean, because I want everything to be fine before I risk everything with you. I just prayed and prayed, para kung ano mang mangyari, I know it was worth it because I prayed for it. Kung makukuha kita, masaya kasi I prayed for it. Kung hindi naman, okay lang din because it was God’s answer. And I already told you rin na before you sent that message of yours, I was crying to God too, asking for a sign. Galing, diba? HAHAHAHAHAHAHA
+That assurance made everything feel better. Vp, from the day I first met you, my life has been so beautifully different. So profoundly blessed. Every moment with you has been like discovering a new shade of happiness I never knew existed. You’ve turned ordinary days into memories I treasure, and even the smallest things feel sweet when you’re around. My heart has found its rhythm in your laughter, my peace in your presence, and my purpose in loving you silently. I want to be better, and I want to be the best version of myself again. I’ll make myself worthy of your love and the trust you will give to me. I’m respectfully using that “chance” you said in your message. Hindi ko alam kung may idea ka na kung saan papunta ’tong letter na ’to, but I hope you take this deeply and with all your heart. If people are songs written in the major or minor key, then you, my love, are major.
+Remember the password? It’s I love you, Mik. I love you, Mik. I’m nominating again but this time, it’s myself. I’m nominating myself to be your suitor. Can I court you, Mik?
+  </p>
+  </div>
+
+      <!-- Courtship Question -->
+<div id="courtQuestion" style="display:none;">
+  <button onclick="answerYes()">Yes</button>
+  <button onclick="answerNo()">No</button>
+</div>
+
+  <!-- Hidden Audio -->
+  <audio id="music">
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+</body>
+
+  <!-- JavaScript -->
+  <script>
+function playSong() {
+  let music = document.getElementById('music');
+  if (music.paused) {
+    music.play();
+  } else {
+    music.pause();
+  }
+}
+
+function spawnHeart() {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤";
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.top = window.innerHeight + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 3000);
+}
+
+function showWithFade(id) {
+  let element = document.getElementById(id);
+  element.style.display = "block";
+  element.classList.add("fade-in");
+}
+
+function checkPassword() {
+  let input = document.getElementById("password").value;
+  let secret = "i love you, mik"; // your chosen password
+  if (input.toLowerCase() === secret.toLowerCase()) {
+    document.getElementById("gate").style.display = "none";
+    showWithFade("gate1");
+    spawnHeart(); // celebrate unlocking
+  } else {
+    alert("ENGKKK MALI 😅 Try again!");
+  }
+}
+
+function checkAnswer1() {
+  let choice = document.querySelector('input[name="q1"]:checked');
+  if (choice && choice.value === "pinupulot mga nahulog kong anak") {
+    document.getElementById("gate1").style.display = "none";
+    showWithFade("gate2"); // fade in Question 2
+    spawnHeart();
+  } else {
+    alert("ENGKKK MALI 😅 Try again!");
+  }
+}
+
+
+
+function checkAnswer2() {
+  let choice = document.querySelector('input[name="q2"]:checked');
+  if (choice && choice.value === "dumudura sa daan") {
+    document.getElementById("gate2").style.display = "none";
+    showWithFade("gate3"); // fade in Question 3
+    spawnHeart();
+  } else {
+    alert("ENGKKK MALI 😅 Try again!");
+  }
+}
+
+function checkAnswer3() {
+  let choice = document.querySelector('input[name="q3"]:checked');
+  if (choice && choice.value === "piano/keyboard") {
+    document.getElementById("gate3").style.display = "none";
+    showWithFade("gate4"); // fade in Question 4
+    spawnHeart();
+  } else {
+    alert("ENGKKK MALI 😅 Try again!");
+  }
+}
+
+function checkAnswer4() {
+  let choice = document.querySelector('input[name="q4"]:checked');
+  if (choice && choice.value === "wala") {
+    document.getElementById("gate4").style.display = "none";
+    showWithFade("gate5"); // fade in Question 5
+    spawnHeart();
+  } else {
+    alert("ENGKKK MALI 😅 Try again!");
+  }
+}
+
+function checkAnswer5() {
+  let choice = document.querySelector('input[name="q5"]:checked');
+  if (choice && choice.value === "iz*one") {
+    document.getElementById("gate5").style.display = "none";
+    showWithFade("letter"); // fade in the letter
+    showWithFade("courtQuestion"); // show the Yes/No buttons
+    spawnHeart();
+  } else {
+    alert("ENGKKK MALI 😅 Try again!");
+  }
+}
+
+function answerYes() {
+  alert("HELLL YEAHHHH WOOOO TINKYU MIKMIK!! YOU MADE ME THE HAPPIEST! send a picture of egi para alam kong yes sinagot mo HAHAHAHAHA");
+  document.body.style.backgroundColor = "#ffe6f0"; // soft pink background
+  for (let i = 0; i < 15; i++) {
+    setTimeout(spawnHeart, i * 200); // heart confetti
+  }
+  showWithFade("finalMessage"); // reveal the final message
+}
+
+
+
+function answerNo() {
+  alert("Awww, oki. oki lang. send pic ni spaki so i know na no sagot mo :(");
+}
+
+</script>
+
+</body>
+</html>
