@@ -63,23 +63,59 @@
 }
     #letter {
   cursor: pointer;
-  padding: 30px;
+  padding: 20px;
   border: 2px solid rgb(112, 118, 146);
   border-radius: 10px;
-  display: none; /* hidden until unlocked */
+  display: none;
   background-color: #6996e2;
   transition: transform 0.3s ease;
-  max-width: 700px;       /* keeps text in a nice column */
-  margin: 0 auto;         /* centers the box horizontally */
-  text-align: left;       /* aligns text neatly */
-  line-height: 1.6;       /* improves readability */
+  max-width: 700px;       /* desktop width */
+  margin: 0 auto;         /* center horizontally */
+  text-align: left;       /* neat alignment */
+  line-height: 1.6;
 }
 
 #letter h1 {
-  text-align: center;     /* title stays centered */
+  text-align: center;
   margin-bottom: 20px;
 }
 
+/* Courtship question */
+#courtQuestion {
+  margin-top: 20px;
+}
+
+#courtQuestion button {
+  margin: 10px;
+  padding: 12px 24px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #ff6699;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+#courtQuestion button:hover {
+  transform: scale(1.1);
+  background-color: #ff3366;
+}
+
+/* 📱 Mobile adjustments */
+@media (max-width: 600px) {
+  body {
+    padding: 20px; /* less padding on small screens */
+  }
+  #letter {
+    max-width: 95%; /* letter fills most of the screen */
+    font-size: 16px; /* slightly smaller text */
+  }
+  #courtQuestion button {
+    width: 100%; /* buttons stack full width */
+    font-size: 16px;
+  }
+}
 #letter:hover {
   transform: scale(1.05);
 }
@@ -301,4 +337,5 @@ function answerNo() {
 </script>
 
 </body>
+
 </html>
